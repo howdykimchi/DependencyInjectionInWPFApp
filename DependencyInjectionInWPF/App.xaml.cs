@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Windows;
 using WpfLibrary;
+using DependencyInjectionInWPF.StartupHelpers;
 
 namespace DependencyInjectionInWPF
 {
@@ -16,7 +17,8 @@ namespace DependencyInjectionInWPF
                 .ConfigureServices((hostContext, services) => 
                 { 
 					services.AddSingleton<MainWindow>();
-					services.AddTransient<ChildForm>();
+					//services.AddTransient<ChildForm>();
+					services.AddFormFactory<ChildForm>();
 					services.AddTransient<IDataAccess, DataAccess>();
                 })
                 .Build();
